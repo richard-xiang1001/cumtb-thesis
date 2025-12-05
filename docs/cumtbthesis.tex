@@ -1,0 +1,382 @@
+% cumtbthesis.tex
+% CUMTB LaTeX 模板使用手册
+
+\documentclass[master]{cumtbthesis}
+
+% 使用手册不需要参考文献
+% \addbibresource{ref/refs.bib}
+
+% 手册信息
+\ctitle{中国矿业大学（北京）毕业论文 \LaTeX{} 模板使用手册}
+\cauthor{向睿超}
+\studentid{}
+\school{人工智能学院}
+\major{人工智能}
+\advisor{}
+\advisortitle{}
+\cdate{2025年12月}
+
+\etitle{CUMTB Thesis \LaTeX{} Template User Manual}
+\eauthor{Xiang RuiChao}
+\eschool{School of Artificial Intelligence}
+\emajor{Artificial Intelligence}
+\eadvisor{}
+
+\keywords{LaTeX；模板；使用手册；中国矿业大学}
+\enkeywords{LaTeX; Template; User Manual; CUMTB}
+
+\begin{document}
+
+% 封面
+\makecover
+
+% 前置部分
+\frontmatter
+
+% 目录
+\tableofcontents
+
+% 主体部分
+\mainmatter
+
+\chapter{模板简介}
+
+\section{关于本模板}
+
+中国矿业大学（北京）毕业论文 \LaTeX{} 模板（cumtbthesis）是为帮助中国矿业大学（北京）的本科生、硕士生和博士生撰写学位论文而开发的 \LaTeX{} 文档类模板。
+
+\subsection{设计目标}
+
+\begin{itemize}
+  \item \textbf{规范性}：严格遵循中国矿业大学（北京）的论文格式要求
+  \item \textbf{易用性}：提供简洁的用户接口，降低使用门槛
+  \item \textbf{专业性}：提供完整的学位论文撰写功能
+  \item \textbf{可扩展性}：采用模块化设计，便于功能扩展
+\end{itemize}
+
+\subsection{主要特性}
+
+\begin{enumerate}
+  \item 支持本科、硕士、博士三种学位类型
+  \item 盲审模式，一键生成盲审版本
+  \item Makefile 和 latexmk 自动化构建
+  \item 完整的符号说明、图表索引功能
+  \item 原创性声明和版权授权书
+  \item 使用 biblatex + biber 管理参考文献
+\end{enumerate}
+
+\section{版本历史}
+
+\begin{table}[htbp]
+  \centering
+  \caption{版本更新历史}
+  \begin{tabular}{lll}
+    \toprule
+    版本 & 日期 & 主要更新 \\
+    \midrule
+    v1.0 & 2025-12-05 & 初始版本，基础功能 \\
+    v2.0 & 2025-12-05 & 新增6大核心功能 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\chapter{安装与配置}
+
+\section{系统要求}
+
+\subsection{必需软件}
+
+\begin{itemize}
+  \item TeX Live 2020 或更新版本（推荐使用最新版）
+  \item XeLaTeX 编译引擎
+  \item Biber 参考文献处理器（可选）
+\end{itemize}
+
+\subsection{推荐软件}
+
+\begin{itemize}
+  \item \textbf{编辑器}：TeXstudio、VS Code + LaTeX Workshop、Overleaf
+  \item \textbf{PDF 阅读器}：Skim（macOS）、SumatraPDF（Windows）
+  \item \textbf{字体}：宋体、黑体、楷体、Times New Roman
+\end{itemize}
+
+\section{安装 TeX Live}
+
+\subsection{macOS}
+
+下载并安装 MacTeX（TeX Live 完整版 for macOS）：
+
+\begin{lstlisting}[language=bash]
+# 使用 Homebrew
+brew install --cask mactex
+
+# 或从官网下载
+# https://www.tug.org/mactex/
+\end{lstlisting}
+
+\subsection{Windows}
+
+从官网下载 TeX Live 安装程序：
+
+\begin{verbatim}
+https://www.tug.org/texlive/acquire-netinstall.html
+\end{verbatim}
+
+\subsection{Linux}
+
+\begin{lstlisting}[language=bash]
+# Debian/Ubuntu
+sudo apt-get install texlive-full
+
+# Fedora
+sudo dnf install texlive-scheme-full
+\end{lstlisting}
+
+\section{获取模板}
+
+\subsection{从 GitHub 下载}
+
+\begin{lstlisting}[language=bash]
+git clone https://github.com/username/cumtb-thesis.git
+cd cumtb-thesis
+\end{lstlisting}
+
+\subsection{下载 ZIP 压缩包}
+
+访问 GitHub 项目页面，点击「Code」→「Download ZIP」。
+
+\chapter{快速开始}
+
+\section{配置论文信息}
+
+编辑 \texttt{main.tex}，修改以下内容：
+
+\begin{lstlisting}[language=TeX]
+% 选择学位类型
+\documentclass[master]{cumtbthesis}
+% bachelor - 本科
+% master  - 硕士（默认）
+% doctor  - 博士
+
+% 中文信息
+\ctitle{论文题目}
+\cauthor{作者姓名}
+\studentid{学号}
+\school{学院名称}
+\major{专业名称}
+\advisor{导师姓名}
+\advisortitle{导师职称}
+\cdate{2025年6月}
+
+% 英文信息
+\etitle{Thesis Title}
+\eauthor{Author Name}
+
+% 关键词
+\keywords{关键词1；关键词2；关键词3}
+\enkeywords{keyword1; keyword2; keyword3}
+\end{lstlisting}
+
+\section{编译论文}
+
+\subsection{使用 Makefile（推荐）}
+
+\begin{lstlisting}[language=bash]
+make thesis    # 编译论文
+make clean     # 清理辅助文件
+make help      # 查看所有命令
+\end{lstlisting}
+
+\subsection{使用 latexmk}
+
+\begin{lstlisting}[language=bash]
+latexmk -xelatex main.tex
+\end{lstlisting}
+
+\subsection{手动编译}
+
+\begin{lstlisting}[language=bash]
+xelatex main.tex
+biber main
+xelatex main.tex
+xelatex main.tex
+\end{lstlisting}
+
+\section{第一份论文}
+
+按照以下步骤创建第一份论文：
+
+\begin{enumerate}
+  \item 修改 \texttt{main.tex} 中的论文信息
+  \item 编辑 \texttt{data/abstract.tex} 撰写中文摘要
+  \item 编辑 \texttt{data/abstract\_en.tex} 撰写英文摘要
+  \item 在 \texttt{data/} 目录创建章节文件
+  \item 在 \texttt{ref/refs.bib} 添加参考文献
+  \item 运行 \texttt{make thesis} 编译
+\end{enumerate}
+
+\chapter{高级功能}
+
+\section{盲审模式}
+
+生成盲审版本（隐藏作者和导师信息）：
+
+\begin{lstlisting}[language=TeX]
+% 在 main.tex 第一行修改为：
+\documentclass[master,review]{cumtbthesis}
+\end{lstlisting}
+
+盲审模式效果：
+\begin{itemize}
+  \item 封面作者姓名、学号留空
+  \item 封面导师姓名、职称留空
+  \item 不包含原创性声明和授权书
+  \item 不包含致谢部分（可选）
+\end{itemize}
+
+\section{符号说明}
+
+在 \texttt{main.tex} 的前置部分取消注释：
+
+\begin{lstlisting}[language=TeX]
+% 符号说明（可选）
+\input{data/notation}
+\end{lstlisting}
+
+在 \texttt{data/notation.tex} 中添加符号：
+
+\begin{lstlisting}[language=TeX]
+\begin{notation}
+$\alpha$ & 学习率参数 \\
+$\beta$ & 衰减系数 \\
+$\mathbf{X}$ & 输入数据矩阵 \\
+\end{notation}
+\end{lstlisting}
+
+\section{图表使用}
+
+\subsection{插入图片}
+
+\begin{lstlisting}[language=TeX]
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\textwidth]{example.pdf}
+  \caption{图片标题}
+  \label{fig:example}
+\end{figure}
+\end{lstlisting}
+
+引用图片：\verb|如图~\ref{fig:example} 所示|
+
+\subsection{插入表格}
+
+\begin{lstlisting}[language=TeX]
+\begin{table}[htbp]
+  \centering
+  \caption{表格标题}
+  \label{tab:example}
+  \begin{tabular}{ccc}
+    \toprule
+    列1 & 列2 & 列3 \\
+    \midrule
+    数据1 & 数据2 & 数据3 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\end{lstlisting}
+
+\section{参考文献管理}
+
+在 \texttt{ref/refs.bib} 中添加文献条目：
+
+\begin{lstlisting}[language=TeX]
+@article{example2024,
+  title   = {Example Article},
+  author  = {Zhang, San and Li, Si},
+  journal = {Journal Name},
+  volume  = {10},
+  pages   = {123--145},
+  year    = {2024}
+}
+\end{lstlisting}
+
+在正文中引用：\verb|\cite{example2024}|
+
+\chapter{常见问题}
+
+\section{编译相关}
+
+\subsection{Q: 编译失败，提示找不到文件？}
+
+A: 确保：
+\begin{enumerate}
+  \item 文件路径正确
+  \item 使用 UTF-8 编码保存文件
+  \item 安装了所有必需的宏包
+\end{enumerate}
+
+\subsection{Q: 如何查看详细的错误信息？}
+
+A: 查看 \texttt{main.log} 文件。
+
+\subsection{Q: L3 kernel 版本不匹配警告？}
+
+A: 这个警告不影响PDF生成，可以忽略。如要消除，运行：
+
+\begin{lstlisting}[language=bash]
+sudo fmtutil-sys --all
+\end{lstlisting}
+
+\section{格式相关}
+
+\subsection{Q: 如何修改页边距？}
+
+A: 在 \texttt{cumtbthesis.cls} 的 \verb|\geometry{}| 命令中修改。
+
+\subsection{Q: 如何自定义章节标题样式？}
+
+A: 修改 \texttt{cumtbthesis.cls} 中的 \verb|\ctexset{}| 配置。
+
+\section{其他问题}
+
+\subsection{Q: 如何贡献代码？}
+
+A: 请参考 \texttt{CONTRIBUTING.md}（待创建）。
+
+\subsection{Q: 如何反馈问题？}
+
+A: 在 GitHub Issues 中提交问题报告。
+
+\chapter{附录}
+
+\section{Makefile 命令参考}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Makefile 命令列表}
+  \begin{tabular}{ll}
+    \toprule
+    命令 & 说明 \\
+    \midrule
+    \texttt{make thesis} & 编译论文 PDF \\
+    \texttt{make doc} & 编译使用手册 PDF \\
+    \texttt{make all} & 编译所有文档 \\
+    \texttt{make clean} & 清理辅助文件 \\
+    \texttt{make cleanall} & 清理所有生成文件 \\
+    \texttt{make distclean} & 完全清理 \\
+    \texttt{make wordcount} & 统计字数 \\
+    \texttt{make help} & 显示帮助信息 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{相关资源}
+
+\begin{itemize}
+  \item 项目主页：\url{https://github.com/username/cumtb-thesis}
+  \item \LaTeX{} 官网：\url{https://www.latex-project.org/}
+  \item CTAN：\url{https://www.ctan.org/}
+  \item CTeX 论坛：\url{http://bbs.ctex.org/}
+\end{itemize}
+
+\end{document}

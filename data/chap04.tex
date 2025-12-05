@@ -1,0 +1,114 @@
+% 子图使用示例
+
+本章演示如何使用子图环境。
+
+\section{使用 subcaption 宏包}
+
+使用 \texttt{subcaption} 宏包可以创建并排的子图。
+
+\subsection{基本用法}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    % \includegraphics[width=\textwidth]{subfig1.pdf}
+    \fbox{\parbox{0.9\textwidth}{\centering 子图 1\\(此处应为图片)}}
+    \caption{第一幅子图}
+    \label{fig:sub1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    % \includegraphics[width=\textwidth]{subfig2.pdf}
+    \fbox{\parbox{0.9\textwidth}{\centering 子图 2\\(此处应为图片)}}
+    \caption{第二幅子图}
+    \label{fig:sub2}
+  \end{subfigure}
+  \caption{并排的两幅子图示例}
+  \label{fig:subfigures}
+\end{figure}
+
+引用整个图组：图~\ref{fig:subfigures}。引用单个子图：图~\ref{fig:sub1} 和图~\ref{fig:sub2}。
+
+\subsection{四宫格布局}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \fbox{\parbox{0.9\textwidth}{\centering 子图 A}}
+    \caption{子图 A}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \fbox{\parbox{0.9\textwidth}{\centering 子图 B}}
+    \caption{子图 B}
+  \end{subfigure}
+  
+  \vspace{0.5cm}
+  
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \fbox{\parbox{0.9\textwidth}{\centering 子图 C}}
+    \caption{子图 C}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \fbox{\parbox{0.9\textwidth}{\centering 子图 D}}
+    \caption{子图 D}
+  \end{subfigure}
+  \caption{四宫格子图布局}
+  \label{fig:grid}
+\end{figure}
+
+\subsection{自定义子图标签}
+
+可以自定义子图的标签格式：
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \fbox{\parbox{0.85\textwidth}{\centering 原图}}
+    \caption{原图}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \fbox{\parbox{0.85\textwidth}{\centering 处理后}}
+    \caption{处理结果}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \fbox{\parbox{0.85\textwidth}{\centering 对比}}
+    \caption{对比图}
+  \end{subfigure}
+  \caption{图像处理流程示例}
+  \label{fig:processing}
+\end{figure}
+
+\section{表格注释}
+
+表格也可以有注释：
+
+\begin{table}[htbp]
+  \centering
+  \caption{实验结果对比}
+  \label{tab:results}
+  \begin{tabular}{lcc}
+    \toprule
+    方法 & 准确率 (\%) & 时间 (s) \\
+    \midrule
+    方法 A & 85.2 & 10.3 \\
+    方法 B & 87.5 & 12.1 \\
+    方法 C\textsuperscript{*} & \textbf{90.1} & 15.8 \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.2cm}
+  
+  \small \textsuperscript{*}注：方法C使用了额外的数据增强
+\end{table}

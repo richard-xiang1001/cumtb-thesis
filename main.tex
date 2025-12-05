@@ -1,0 +1,112 @@
+% main.tex
+% 中国矿业大学（北京）毕业论文示例文档
+% CUMTB Thesis Template Example
+
+% ============================================================================
+% 文档类选项 Document Class Options
+% ============================================================================
+% bachelor - 本科学位论文
+% master  - 硕士学位论文（默认）
+% doctor  - 博士学位论文
+
+\documentclass[master]{cumtbthesis}
+
+% ============================================================================
+% 参考文献数据库 Bibliography Database
+% ============================================================================
+
+\addbibresource{ref/refs.bib}
+
+% ============================================================================
+% 论文信息 Thesis Information
+% ============================================================================
+
+% 中文信息
+\ctitle{中国矿业大学（北京）毕业论文 \LaTeX{} 模板使用示例}
+\cauthor{张三}
+\studentid{2021000000}
+\school{人工智能学院}
+\major{计算机科学与技术}
+\advisor{李四}
+\advisortitle{教授}
+\cdate{2025年6月}
+
+% 英文信息
+\etitle{An Example of Using CUMTB Thesis \LaTeX{} Template}
+\eauthor{Zhang San}
+\eschool{School of Computer Science and Technology}
+\emajor{Computer Science and Technology}
+\eadvisor{Professor Li Si}
+
+% 关键词
+\keywords{中国矿业大学（北京）；毕业论文；\LaTeX{} 模板}
+\enkeywords{CUMTB; Thesis; \LaTeX{} Template}
+
+% ============================================================================
+% 文档开始 Document Begin
+% ============================================================================
+
+\begin{document}
+
+% 封面 Cover
+\makecover
+
+% ============================================================================
+% 前置部分 Front Matter
+% ============================================================================
+
+\frontmatter
+
+% 中文摘要 Chinese Abstract
+\input{data/abstract}
+
+% 英文摘要 English Abstract
+\input{data/abstract_en}
+
+% 原创性声明和授权书（盲审时不包含）
+% Statement and Authorization (not included in review mode)
+\ifcumtb@review\else
+  \input{data/statement}
+\fi
+
+% 目录 Table of Contents
+\tableofcontents
+
+% 插图目录（可选）
+% \listoffigures
+
+% 表格目录（可选）
+% \listoftables
+
+% 符号说明（可选）
+% \input{data/notation}
+
+% ============================================================================
+% 主体部分 Main Matter
+% ============================================================================
+
+\mainmatter
+
+% 各章节
+\input{data/chap01}
+\input{data/chap02}
+\input{data/chap03}
+\input{data/chap04}  % 新增：子图和高级图表示例
+% 添加更多章节...
+
+% ============================================================================
+% 后置部分 Back Matter
+% ============================================================================
+
+\backmatter
+
+% 参考文献 References
+\printbibliography[heading=bibintoc,title=参考文献]
+
+% 致谢 Acknowledgements
+\input{data/acknowledgements}
+
+% 附录（可选）Appendix (optional)
+\input{data/appendix}
+
+\end{document}
