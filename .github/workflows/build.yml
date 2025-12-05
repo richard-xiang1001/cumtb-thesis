@@ -19,9 +19,10 @@ jobs:
       uses: xu-cheng/latex-action@v3
       with:
         root_file: main.tex
+        docker_image: texlive/texlive:latest
         latexmk_use_xelatex: true
         latexmk_shell_escape: true
-        args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+        args: -pdf -file-line-error -interaction=nonstopmode
         
     - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
@@ -47,6 +48,7 @@ jobs:
       with:
         root_file: docs/cumtbthesis.tex
         working_directory: .
+        docker_image: texlive/texlive:latest
         latexmk_use_xelatex: true
         args: -pdf -file-line-error -interaction=nonstopmode
       continue-on-error: true
