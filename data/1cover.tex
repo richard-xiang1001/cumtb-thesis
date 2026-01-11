@@ -1,0 +1,44 @@
+\pagestyle{empty} % 封面页不需要页码、页眉和页脚
+
+% --- 1. 标题部分 (要求：二号、黑体、加粗、居中、单倍行距) ---
+\begin{center}
+    \setstretch{1.0} 
+    \vspace*{2.0cm} % 顶部留空高度
+    
+    {\erhao\heiti\bfseries 中国矿业大学（北京）} \\
+    \vspace{1.2cm}
+    {\erhao\heiti\bfseries 本科生毕业设计（论文）}
+\end{center}
+
+\vspace{4.5cm} % 标题与表格之间的间距
+
+% --- 2. 作者信息表格部分 (要求：三号、楷体、西文Times New Roman) ---
+% 请在下方表格中填写您的个人信息
+\begin{center}
+    \setstretch{1.0}
+    \sanhao\kaishu % 三号，楷体
+    \setlength{\tabcolsep}{5pt}
+    \renewcommand{\arraystretch}{2.1} % 调整行高以符合版式
+    
+    % 使用 tabularx 自动调整列宽，\hdashline 为虚线，\cline 为实线
+    \begin{tabularx}{\textwidth}{;{1pt/1pt}l;{1pt/1pt}X;{1pt/1pt}l;{1pt/1pt}X;{1pt/1pt}}
+        \hdashline
+        中文题目： & \multicolumn{3}{l;{1pt/1pt}}{在此输入您的中文题目} \\ \cline{2-4}
+        \hdashline
+        英文题目： & \multicolumn{3}{l;{1pt/1pt}}{Enter your English title here} \\ \cline{2-4}
+        \hdashline
+        专题题目： & \multicolumn{3}{l;{1pt/1pt}}{在此输入专题题目（如有）} \\
+        \hdashline
+        姓\quad 名： & \centering 您的姓名 & 学\quad 号： & 您的学号 \\ \cline{2-2} \cline{4-4}
+        \hdashline
+        学\quad 院： & \multicolumn{3}{l;{1pt/1pt}}{在此输入学院名称} \\ \cline{2-4}
+        \hdashline
+        专\quad 业： & \centering 您的专业 & 班\quad 级： & 您的班级 \\ \cline{2-2} \cline{4-4}
+        \hdashline
+        指导教师： & \centering 教师姓名 & 职\quad 称： & 职称 \\ \cline{2-2} \cline{4-4}
+        \hdashline
+        完成日期： & \multicolumn{3}{c;{1pt/1pt}}{2025\hspace{1em} 年 \hspace{1em} 6 \hspace{1em} 月 \hspace{1em} 15 \hspace{1em} 日} \\ \cline{2-4}
+        \hdashline
+    \end{tabularx}
+\end{center}
+\clearpage

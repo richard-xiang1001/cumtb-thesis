@@ -1,0 +1,162 @@
+% ============================================================================
+% 中国矿业大学（北京）本科生毕业设计（论文） LaTeX 模板 - 主文件
+% ============================================================================
+% [编译指引] 
+% 推荐环境：TeX Live 2023+ 或 MiKTeX
+% 编译方式：XeLaTeX (必须使用 XeLaTeX 才能正确处理中文字体)
+% 文件编码：UTF-8
+% ============================================================================
+
+\documentclass[12pt, a4paper]{ctexart} % 使用 ctexart 文档类，预设了中文排版环境
+
+\ExplSyntaxOn
+\cs_if_exist:NF \tbl_save_outer_table_cols: { \cs_new:Npn \tbl_save_outer_table_cols: {} }
+\ExplSyntaxOff
+
+% ==================== 1. 宏包引入 (Packages) ====================
+\usepackage{geometry}           % 设置页边距
+\usepackage{fancyhdr}           % 自定义页眉页脚
+\usepackage{titletoc}           % 目录样式定制核心包
+\usepackage{fontspec}           % 字体设置支持
+\usepackage{setspace}           % 控制行间距
+\usepackage{amsmath}            % 数学公式支持
+\usepackage{booktabs}           % 绘制三线表 (如 \toprule, \midrule)
+\usepackage{caption}            % 定制图表标题样式
+\usepackage{subcaption}         % 支持子图 (Subfigures)
+\usepackage{cite}               % 参考文献引用处理
+\usepackage{titlesec}           % 辅助设置标题格式
+\usepackage{float}              % 固定图片位置 (使用 [H] 选项)
+\usepackage{multirow}           % 表格中合并行
+\usepackage{xcolor}             % 文本颜色支持
+\usepackage{graphicx}           % 插入图片
+\usepackage{tabularx}           % 自动调整列宽的表格
+\usepackage{arydshln}           % 绘制虚线表格 (针对任务书等特殊页面)
+\usepackage{tikz}               % 绘图工具 (用于绘制页面角标)
+\usepackage{makecell}           % 单元格内换行支持
+\usepackage{calc}               % 长度计算功能
+\usepackage[hidelinks]{hyperref} % 超链接处理
+\usepackage{enumitem}           % 列表环境定制 (用于参考文献等)
+
+% 定义常用表格列格式
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % 居中且指定宽度
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % 左对齐且指定宽度
+
+% ==================== 2. 全局页面设置 ====================
+% 页面边距：符合标准版式要求
+\geometry{left=3.18cm, right=3.18cm, top=2.54cm, bottom=2.54cm, headheight=15pt}
+
+% 英文字体：默认使用 Times New Roman
+\setmainfont{Times New Roman}
+
+% 自定义字号命令 (bp为大点，pt为点)
+\newcommand{\erhao}{\fontsize{22bp}{22bp}\selectfont}     % 二号
+\newcommand{\sanhao}{\fontsize{16bp}{16bp}\selectfont}    % 三号
+\newcommand{\xiaosan}{\fontsize{15pt}{22.5pt}\selectfont} % 小三
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}    % 小四 (12pt)
+\newcommand{\wuhao}{\fontsize{10.5pt}{12pt}\selectfont}   % 五号 (10.5pt)
+
+% 行距定义
+\newlength{\toclineskip}
+\setlength{\toclineskip}{20pt} % 目录行间距
+\newcommand{\bodylineskip}{25pt} % 正文行间距 (25磅)
+
+% ==================== 3. 页眉页脚基本设置 ====================
+\pagestyle{fancy}
+\fancyhf{} 
+\fancyhead[C]{\zihao{5}\songti 中国矿业大学（北京）20XX 届本科毕业设计（论文）}
+\fancyfoot[C]{\zihao{5}\songti \thepage}
+\renewcommand{\headrulewidth}{0.75pt}
+
+% ==================== 3. 标题格式设置 (ctexset) ====================
+% 定义各级标题的字体、字号和间距
+\ctexset{
+    section = {
+        format = \centering\zihao{-3}\heiti\bfseries, % 一级标题：加粗、居中、小三、黑体
+        aftername = \quad,
+        beforeskip = 1\baselineskip,
+        afterskip = 1\baselineskip,
+        break = \clearpage, % 每一章从新页开始
+    },
+    subsection = {
+        format = \raggedright\zihao{4}\heiti,         % 二级标题：四号、左对齐、黑体
+        beforeskip = 0.5\baselineskip,
+        afterskip = 0.5\baselineskip,
+    },
+    subsubsection = {
+        format = \raggedright\zihao{-4}\songti\bfseries, % 三级标题：小四、左对齐、宋体加粗
+        beforeskip = 0.5\baselineskip,
+        afterskip = 0.5\baselineskip,
+    }
+}
+
+% ==================== 4. 目录样式定义 (titletoc) ====================
+\titlecontents{section}[0em]
+    {\addvspace{0pt}\zihao{5}\songti\bfseries}
+    {\thecontentslabel\hspace{1em}}
+    {}
+    {\titlerule*[0.5pc]{.}\contentspage}
+    [\addvspace{0pt}]
+
+\titlecontents{subsection}[2em]
+    {\addvspace{0pt}\zihao{5}\songti}
+    {\thecontentslabel\hspace{1em}}
+    {}
+    {\titlerule*[0.5pc]{.}\contentspage}
+    [\addvspace{0pt}]
+
+\titlecontents{subsubsection}[4em]
+    {\addvspace{0pt}\zihao{5}\songti}
+    {\thecontentslabel\hspace{1em}}
+    {}
+    {\titlerule*[0.5pc]{.}\contentspage}
+    [\addvspace{0pt}]
+
+% 重定义目录命令
+\makeatletter
+\renewcommand\tableofcontents{%
+    \clearpage
+    \thispagestyle{empty} 
+    \begingroup
+    \par
+    \vspace{\baselineskip}
+    \centering
+    {\zihao{-3}\heiti\bfseries 目\quad\quad 录}
+    \par
+    \vspace{\baselineskip}
+    \setlength{\baselineskip}{\toclineskip} 
+    \@starttoc{toc}%
+    \endgroup
+    \clearpage
+}
+\makeatother
+
+% ==================== 5. 文档开始 ====================
+\begin{document}
+
+% 封面
+\input{1cover}
+
+% 声明
+\input{2claim}
+
+% 任务书
+\input{3.1assignment}
+\input{3.2assignment}
+
+% 结合科研说明书
+% \input{4ResearchBrief}
+\input{4ResearchBrief}
+
+% 中英文摘要
+\input{5.1ChineseAbstract}
+\input{5.2EnglishAbstract}
+
+% 目录
+\tableofcontents
+
+% 正文
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\input{6Body}
+
+\end{document}

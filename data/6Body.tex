@@ -1,0 +1,161 @@
+% 第1章 绪论
+\section{绪论}
+\begingroup
+\zihao{-4}\songti
+\setlength{\baselineskip}{25pt}
+\parindent 2em
+
+\subsection{研究背景与意义}
+自 Leslie Lamport 在 20 世纪 80 年代开发以来，\LaTeX{} 已成为理工科学术交流事实上的标准\cite{ref-lamport}。在毕业论文撰写过程中，由于涉及大量的多级标题、交叉引用、自动化目录以及复杂的数学推导，传统的文字处理软件（如 Microsoft Word）往往因其排版逻辑的局限性，导致用户在后期格式调整上耗费巨大精力。
+
+使用 \LaTeX{} 的核心意义在于“内容与格式的分离”。用户只需关注学术内容的表达，而将复杂的排版规则交给宏包与编译器处理。尤其是在中国矿业大学（北京）的毕业设计（论文）规范要求下，统一且严谨的格式是获得优秀评价的重要前提\cite{ref-knuth1}。
+
+\subsection{自动化管理的优雅性}
+\LaTeX{} 的自动化特性体现在其对文档要素的精准控制。无论是目录的实时更新、公式引用的自动编号，还是参考文献的格式化排版，都无需人工干预。这种“一次配置，全局生效”的逻辑，正是其魅力所在。
+
+\endgroup
+
+% 第2章 论文主体：LaTeX 核心技术实践
+\clearpage
+\section{论文主体}
+\begingroup
+\zihao{-4}\songti
+\setlength{\baselineskip}{25pt}
+\parindent 2em
+
+\subsection{数学公式的深度解析}
+\LaTeX{} 在数学式表达上的优雅是无与伦比的。除了基础的行内公式和简单方程，它还能轻松处理复杂的多行推导和矩阵运算。
+
+\subsubsection{多行公式推导与对齐}
+在物理或数学推演中，常常需要多行公式对齐。使用 \texttt{aligned} 环境可以让等号精准对齐，如式\ref{eq:multi-line}所示：
+\begin{equation}
+    \begin{aligned}
+        \nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0} \\
+        \nabla \cdot \mathbf{B} &= 0 \\
+        \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+        \nabla \times \mathbf{B} &= \mu_0\left(\mathbf{J} + \varepsilon_0\frac{\partial \mathbf{E}}{\partial t}\right)
+    \end{aligned}
+    \label{eq:multi-line}
+\end{equation}
+
+\subsubsection{矩阵与复杂算子}
+处理大规模矩阵时，\LaTeX{} 的语法也极其直观：
+\begin{equation}
+    \mathbf{A} = \begin{bmatrix}
+        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m1} & a_{m2} & \cdots & a_{mn}
+    \end{bmatrix}
+\end{equation}
+
+\subsection{图表与浮动体的高级应用}
+\LaTeX{} 能够智能安排图表位置，确保页面排版的紧凑与美观。
+
+\subsubsection{子图并排显示}
+在对比实验结果时，通常需要将几张图放在同一个标题下。通过 \texttt{minipage} 或相关的子图宏包，可以实现如图\ref{fig:comparison} 所示的布局。
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \fbox{实验组 A 图片}
+        \caption{实验组 A 结果}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \fbox{实验组 B 图片}
+        \caption{实验组 B 结果}
+    \end{minipage}
+    \caption{两组实验结果的对比分析}
+    \label{fig:comparison}
+\end{figure}
+
+\subsubsection{复杂表格的灵活性}
+除了基础的三线表，\LaTeX{} 还能处理合并行、合并列以及跨页的长表格。表\ref{tab:complex} 展示了一个包含合并单元格的表格，其结构远比手动绘制稳定。
+
+\begin{table}[H]
+    \centering
+    \caption{煤样力学性能综合测试表}
+    \label{tab:complex}
+    \zihao{5}\songti
+    \begin{tabular}{ccccc}
+        \toprule
+        \multirow{2}{*}{采样地点} & \multicolumn{2}{c}{物理性质} & \multicolumn{2}{c}{力学指标} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+        & 密度 (g/cm$^3$) & 含水率 (\%) & 抗压强度 (MPa) & 弹性模量 (GPa) \\
+        \midrule
+        东区 1011 & 1.35 & 3.2 & 24.5 & 3.5 \\
+        西区 2022 & 1.42 & 2.8 & 28.1 & 3.9 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{参考文献：从手动到自动的跃迁}
+正如 Knuth 在《数字书法》\cite{ref-knuth2}中所言，排版应当是学术诚信的延伸。手动维护几十个参考文献不仅枯燥，而且极易出错。
+
+在本模版中，只需使用 \verb|\cite{label}| 命令，引用的顺序标号就会根据你在列表中的位置自动调整。例如，我们在补充了关于参考文献著录规则的国家标准\cite{ref-gb7714}后，后续的所有文献序号都会自动顺延，无需手动修改正文中的数字。
+
+这种“一次一处修改，全局自动对齐”的逻辑，是 \LaTeX{} 能够成为学术研究利器的根本原因。
+
+\endgroup
+
+% --- 致谢 ---
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{致谢}
+\begin{center}
+    {\zihao{-3}\heiti\bfseries 致\quad 谢}
+\end{center}
+\vspace{\baselineskip}
+\begingroup
+\zihao{-4}\songti
+\setlength{\baselineskip}{25pt}
+\hspace*{2em}在完成本篇 \LaTeX{} 使用教程的过程中，感谢 Leslie Lamport 和 Donald Knuth 为学术界带来的伟大工具。同时也感谢中国矿业大学（北京）对本科生学术规范的支持，使我们能在一个科学、严谨的环境下完成学业。
+\endgroup
+
+% --- 参考文献 ---
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{参考文献}
+\begingroup
+    \noindent
+    {\zihao{-3}\heiti\bfseries 参考文献} \par
+\endgroup
+\vspace{-1.0\baselineskip}
+\begingroup
+    \zihao{5}\songti
+    \setlength{\baselineskip}{20pt}
+    \renewcommand{\refname}{} % 禁用环境默认标题
+    \begin{thebibliography}{99}
+        \addtolength{\itemsep}{-0.5em} % 紧凑排版
+        \bibitem{ref-lamport} LAMPORT L. \LaTeX: A Document Preparation System[M]. 2nd ed. Reading: Addison-Wesley, 1994.
+        \bibitem{ref-knuth1} KNUTH D E. The \TeX{}book[M]. Reading: Addison-Wesley Professional, 1984.
+        \bibitem{ref-knuth2} KNUTH D E. Digital Typography[M]. Stanford: Center for the Study of Language and Information, 1999.
+        \bibitem{ref-kopka} KOPKA H, DALY P W. Guide to \LaTeX[M]. 4th ed. Boston: Addison-Wesley, 2003.
+        \bibitem{ref-gb7714} 中华人民共和国国家质量监督检验检疫总局, 中国国家标准化管理委员会. 信息与文献：参考文献著录规则: GB/T 7714—2015[S]. 北京: 中国标准出版社, 2015.
+        \bibitem{ref-liu} 刘国钧, 陈绍业, 王凤翥, 等. 图书馆目录[M]. 北京: 高等教育出版社, 1957.
+    \end{thebibliography}
+\endgroup
+
+% --- 附录 ---
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{附录 1\hspace{1em}常用 LaTeX 宏包清单}
+\noindent {\zihao{-3}\heiti\bfseries 附录 1\hspace{1em}常用 LaTeX 宏包清单}
+\vspace{\baselineskip}
+
+\begingroup
+\zihao{-4}\songti
+\setlength{\baselineskip}{25pt}
+本模版已内置并测试通过了以下关键宏包：
+\begin{enumerate}
+    \item \texttt{amsmath}: 数学公式核心增强宏包。
+    \item \texttt{booktabs}: 实现学术三线表。
+    \item \texttt{multirow}: 处理表格合并行。
+    \item \texttt{graphicx}: 插入图像文件的标准接口。
+    \item \texttt{geometry}: 调整页边距与页面布局。
+\end{enumerate}
+
+\textcolor{red}{【附录内容如包含代码，建议使用 \texttt{listings} 环境以获得更好的代码高亮支持。】}
+\endgroup

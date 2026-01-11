@@ -1,0 +1,48 @@
+\pagestyle{empty} % 隐藏页码，确保页面干净（如需页码可删掉此行）
+\enlargethispage{2cm} % 强制增加本页的可容纳高度
+
+
+\begin{center}
+    % 标题：黑体小三（包括括号）
+    {\heiti\xiaosan 中国矿业大学 (北京) 本科生毕业设计 (论文) 任务书}
+    
+    \vspace{0.6em} % 稍微收缩标题下间距
+
+    % 设置表格行高
+    \setstretch{2.0} % 稍微减小一点行高确保不挤占空间
+
+    % --- 第一部分：学院、专业、班级、姓名、学号 ---
+    \begin{tabularx}{\textwidth}{:p{3.5em}:X:p{3em}:X:p{3em}:X:}
+        \hdashline
+        {\songti\xiaosi 学院：} & & {\songti\xiaosi 专业：} & & {\songti\xiaosi 班级：} & \\ \hdashline
+        {\songti\xiaosi 姓名：} & & {\songti\xiaosi 学号：} & \multicolumn{3}{l:}{} \\ \hdashline
+    \end{tabularx}
+    
+    \nointerlineskip
+
+    % --- 第二部分：日期行（第一列宽度不同，垂直虚线错开） ---
+    \begin{tabularx}{\textwidth}{:p{7.5em}:X:}
+        {\songti\xiaosi 任务下达日期：} & 20 \hspace{1.5em} 年 \hspace{1.5em} 月 \hspace{1.5em} 日 \\ \hdashline
+        {\songti\xiaosi 任务完成日期：} & 20 \hspace{1.5em} 年 \hspace{1.5em} 月 \hspace{1.5em} 日 \\ \hdashline
+    \end{tabularx}
+
+    \nointerlineskip
+
+    % --- 第三部分：论文题目 ---
+    \begin{tabularx}{\textwidth}{:p{7.5em}:X:}
+        {\songti\xiaosi 论 文 题 目 ：} & \\ \hdashline
+        {\songti\xiaosi 专 题 题 目 ：} & \\ \hdashline
+    \end{tabularx}
+
+    \nointerlineskip
+
+    % --- 第四部分：任务主要内容 ---
+    % 注意：这里的高度控制在 15.5cm 左右，通常可以刚好填满一页
+    \begin{tabularx}{\textwidth}{:X:}
+        \multicolumn{1}{:l:}{{\songti\xiaosi 任务主要内容：}} \\ \hdashline
+        \begin{minipage}[t][15.5cm][t]{\dimexpr\textwidth-2\tabcolsep\relax}
+            \vfill
+        \end{minipage} \\ \hdashline
+    \end{tabularx}
+\end{center}
+\clearpage
