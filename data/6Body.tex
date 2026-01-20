@@ -1,21 +1,15 @@
-% 第1章 绪论
 \section{绪论}
 \begingroup
 \zihao{-4}\songti
 \setlength{\baselineskip}{25pt}
 \parindent 2em
 
-\subsection{研究背景与意义}
-自 Leslie Lamport 在 20 世纪 80 年代开发以来，\LaTeX{} 已成为理工科学术交流事实上的标准\cite{ref-lamport}。在毕业论文撰写过程中，由于涉及大量的多级标题、交叉引用、自动化目录以及复杂的数学推导，传统的文字处理软件（如 Microsoft Word）往往因其排版逻辑的局限性，导致用户在后期格式调整上耗费巨大精力。
+前苏联马凯耶夫煤矿安全科学研究所在 20 世纪 50 年代提出了煤层近工作面部分的水力挤出方法 $^{[1-3]}$，并在顿巴斯矿井的采掘工作面获得了比较广泛的试验和应用。我国煤炭总院抚顺和重庆分院于七十年代在湖南白沙、贵州六枝、江西岗等矿区进行了试验研究 $^{[4-10]}$。由于操作工艺和安全管理比较复杂，仅在回采工作面使用，在掘进工作面未能得到推广应用。近年来先后在焦作、鹤壁等矿区进行了掘进工作面水力挤出（中高压注水）试验，也取得了很好 1.5 倍，月进尺平均达到 100 m，产生了显著的经济和社会效益。
 
-使用 \LaTeX{} 的核心意义在于“内容与格式的分离”。用户只需关注学术内容的表达，而将复杂的排版规则交给宏包与编译器处理。尤其是在中国矿业大学（北京）的毕业设计（论文）规范要求下，统一且严谨的格式是获得优秀评价的重要前提\cite{ref-knuth1}。
-
-\subsection{自动化管理的优雅性}
-\LaTeX{} 的自动化特性体现在其对文档要素的精准控制。无论是目录的实时更新、公式引用的自动编号，还是参考文献的格式化排版，都无需人工干预。这种“一次配置，全局生效”的逻辑，正是其魅力所在。
+\par 试验巷道为李一矿-660 mW2EB$_8$工作面运输巷，位于-660 m 西二采区东翼，东至开 F13-8-1 断层，西至-660 m 西二石门，巷道标高-653 m，巷道设计长度 500 米。巷道采用 3\# U 型棚支护，跟顶板、中线施工，断面面积 9.32 m$^2$。该区域 B$_8$ 煤层厚度 3.0 $\sim$ 4.0 m，平均 3.5 m，煤岩层走向 140 $\sim$ 160$^\circ$，倾角 20 $\sim$ 25$^\circ$，平均 23$^\circ$。煤层直接顶板为厚 4.0 $\sim$ 6.0 m 的灰白色层状细粒砂岩，岩层层理发育。煤层底板为厚 4.0 $\sim$ 6.0 m 的灰色块状、性脆、致密页岩，含植物化石。
 
 \endgroup
 
-% 第2章 论文主体：LaTeX 核心技术实践
 \clearpage
 \section{论文主体}
 \begingroup
@@ -23,139 +17,111 @@
 \setlength{\baselineskip}{25pt}
 \parindent 2em
 
-\subsection{数学公式的深度解析}
-\LaTeX{} 在数学式表达上的优雅是无与伦比的。除了基础的行内公式和简单方程，它还能轻松处理复杂的多行推导和矩阵运算。
+\subsection{水力挤出措施工艺及注水参数}
+\subsubsection{注水系统及设备选型}
+水力挤出所用注水系统由注水泵、压力表、水表、流量控制阀、高压胶管和封孔器组成，如图 \ref{fig:2.1} 所示。
 
-\subsubsection{多行公式推导与对齐}
-在物理或数学推演中，常常需要多行公式对齐。使用 \texttt{aligned} 环境可以让等号精准对齐，如式\ref{eq:multi-line}所示：
-\begin{equation}
-    \begin{aligned}
-        \nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0} \\
-        \nabla \cdot \mathbf{B} &= 0 \\
-        \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
-        \nabla \times \mathbf{B} &= \mu_0\left(\mathbf{J} + \varepsilon_0\frac{\partial \mathbf{E}}{\partial t}\right)
-    \end{aligned}
-    \label{eq:multi-line}
-\end{equation}
+\textcolor{red}{【在正文中必须有与图、表呼应的文字，且叙述应与图、表结果相符。图、表逐章单独编序，图的下方须注出图序和图题。】}
 
-\subsubsection{矩阵与复杂算子}
-处理大规模矩阵时，\LaTeX{} 的语法也极其直观：
-\begin{equation}
-    \mathbf{A} = \begin{bmatrix}
-        a_{11} & a_{12} & \cdots & a_{1n} \\
-        a_{21} & a_{22} & \cdots & a_{2n} \\
-        \vdots & \vdots & \ddots & \vdots \\
-        a_{m1} & a_{m2} & \cdots & a_{mn}
-    \end{bmatrix}
-\end{equation}
-
-\subsection{图表与浮动体的高级应用}
-\LaTeX{} 能够智能安排图表位置，确保页面排版的紧凑与美观。
-
-\subsubsection{子图并排显示}
-在对比实验结果时，通常需要将几张图放在同一个标题下。通过 \texttt{minipage} 或相关的子图宏包，可以实现如图\ref{fig:comparison} 所示的布局。
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \fbox{实验组 A 图片}
-        \caption{实验组 A 结果}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.45\textwidth}
-        \centering
-        \fbox{实验组 B 图片}
-        \caption{实验组 B 结果}
-    \end{minipage}
-    \caption{两组实验结果的对比分析}
-    \label{fig:comparison}
+    \includegraphics[width=0.8\textwidth]{../figures/图片1.png}
+    \caption{水力挤出措施注水系统示意}
+    \label{fig:2.1}
 \end{figure}
 
-\subsubsection{复杂表格的灵活性}
-除了基础的三线表，\LaTeX{} 还能处理合并行、合并列以及跨页的长表格。表\ref{tab:complex} 展示了一个包含合并单元格的表格，其结构远比手动绘制稳定。
-
-\begin{table}[H]
-    \centering
-    \caption{煤样力学性能综合测试表}
-    \label{tab:complex}
-    \zihao{5}\songti
-    \begin{tabular}{ccccc}
-        \toprule
-        \multirow{2}{*}{采样地点} & \multicolumn{2}{c}{物理性质} & \multicolumn{2}{c}{力学指标} \\
-        \cmidrule(lr){2-3} \cmidrule(lr){4-5}
-        & 密度 (g/cm$^3$) & 含水率 (\%) & 抗压强度 (MPa) & 弹性模量 (GPa) \\
-        \midrule
-        东区 1011 & 1.35 & 3.2 & 24.5 & 3.5 \\
-        西区 2022 & 1.42 & 2.8 & 28.1 & 3.9 \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-\subsection{参考文献：从手动到自动的跃迁}
-正如 Knuth 在《数字书法》\cite{ref-knuth2}中所言，排版应当是学术诚信的延伸。手动维护几十个参考文献不仅枯燥，而且极易出错。
-
-在本模版中，只需使用 \verb|\cite{label}| 命令，引用的顺序标号就会根据你在列表中的位置自动调整。例如，我们在补充了关于参考文献著录规则的国家标准\cite{ref-gb7714}后，后续的所有文献序号都会自动顺延，无需手动修改正文中的数字。
-
-这种“一次一处修改，全局自动对齐”的逻辑，是 \LaTeX{} 能够成为学术研究利器的根本原因。
-
-\endgroup
-
-% --- 致谢 ---
-\clearpage
-\phantomsection
-\addcontentsline{toc}{section}{致谢}
-\begin{center}
-    {\zihao{-3}\heiti\bfseries 致\quad 谢}
-\end{center}
-\vspace{\baselineskip}
-\begingroup
-\zihao{-4}\songti
-\setlength{\baselineskip}{25pt}
-\hspace*{2em}在完成本篇 \LaTeX{} 使用教程的过程中，感谢 Leslie Lamport 和 Donald Knuth 为学术界带来的伟大工具。同时也感谢中国矿业大学（北京）对本科生学术规范的支持，使我们能在一个科学、严谨的环境下完成学业。
-\endgroup
-
-% --- 参考文献 ---
-\clearpage
-\phantomsection
-\addcontentsline{toc}{section}{参考文献}
-\begingroup
-    \noindent
-    {\zihao{-3}\heiti\bfseries 参考文献} \par
-\endgroup
-\vspace{-1.0\baselineskip}
-\begingroup
-    \zihao{5}\songti
-    \setlength{\baselineskip}{20pt}
-    \renewcommand{\refname}{} % 禁用环境默认标题
-    \begin{thebibliography}{99}
-        \addtolength{\itemsep}{-0.5em} % 紧凑排版
-        \bibitem{ref-lamport} LAMPORT L. \LaTeX: A Document Preparation System[M]. 2nd ed. Reading: Addison-Wesley, 1994.
-        \bibitem{ref-knuth1} KNUTH D E. The \TeX{}book[M]. Reading: Addison-Wesley Professional, 1984.
-        \bibitem{ref-knuth2} KNUTH D E. Digital Typography[M]. Stanford: Center for the Study of Language and Information, 1999.
-        \bibitem{ref-kopka} KOPKA H, DALY P W. Guide to \LaTeX[M]. 4th ed. Boston: Addison-Wesley, 2003.
-        \bibitem{ref-gb7714} 中华人民共和国国家质量监督检验检疫总局, 中国国家标准化管理委员会. 信息与文献：参考文献著录规则: GB/T 7714—2015[S]. 北京: 中国标准出版社, 2015.
-        \bibitem{ref-liu} 刘国钧, 陈绍业, 王凤翥, 等. 图书馆目录[M]. 北京: 高等教育出版社, 1957.
-    \end{thebibliography}
-\endgroup
-
-% --- 附录 ---
-\clearpage
-\phantomsection
-\addcontentsline{toc}{section}{附录 1\hspace{1em}常用 LaTeX 宏包清单}
-\noindent {\zihao{-3}\heiti\bfseries 附录 1\hspace{1em}常用 LaTeX 宏包清单}
-\vspace{\baselineskip}
-
-\begingroup
-\zihao{-4}\songti
-\setlength{\baselineskip}{25pt}
-本模版已内置并测试通过了以下关键宏包：
-\begin{enumerate}
-    \item \texttt{amsmath}: 数学公式核心增强宏包。
-    \item \texttt{booktabs}: 实现学术三线表。
-    \item \texttt{multirow}: 处理表格合并行。
-    \item \texttt{graphicx}: 插入图像文件的标准接口。
-    \item \texttt{geometry}: 调整页边距与页面布局。
+\begin{enumerate}[label=(\arabic*)]
+    \item 注水泵：选用 XRB2B 型乳化液泵，额定压力 20 MPa、流量 80 L/min。
+    \item 封孔器：选用自主研制的 SFK40/19 型封孔器，适用孔径 40~50 mm，最大膨胀直径 70 mm，工作状态下耐压 30 MPa。
+    \item 水表：选用 SGS 型双功能高压水表，额定压力 20 MPa，最小流量 0.1 m$^3$/h，最大流量 5 m$^3$/h，测量允许最大误差为 5\%。
+    \item 高压胶管：内径 25 mm，额定压力 32 MPa。
 \end{enumerate}
 
-\textcolor{red}{【附录内容如包含代码，建议使用 \texttt{listings} 环境以获得更好的代码高亮支持。】}
+\textcolor{red}{【量、单位和符号严格执行国家标准，不可使用非法定计量单位。引用文献数据出现非法定计量单位时，应加换算成法定计量单位的关系式。数字与单位之间加空格。】}
+
+\subsubsection{钢的原始组织与淬火后的强硬性}
+图 \ref{fig:2.2} 表示零保温奥氏体逆相变淬火温度对 25MnV 钢强硬性的影响。在试验的温度范围内，淬火温度越低，其强硬性越高。随淬火温度增加，钢的强硬性降低，超过 900$^\circ$C 后，加速下降。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../figures/图片2.png}
+    \caption{淬火温度对 25MnV 钢硬度的影响}
+    \label{fig:2.2}
+\end{figure}
+
+\textcolor{red}{【坐标图，端线尽量读取在刻度线上。图内的空间较大时可将图注列在图内空白处。横、竖坐标必须垂直，坐标刻度线的疏密程度要相近，刻度线朝向图内，去掉无数字对应的刻度线，不用背景网格线。标度数字尽量圆整，过大或过小时可用指数表示，如 10$^2$、10$^{-2}$。图注的各项间用分号，最后无标点；横纵坐标的物理量尽量用中文，如，注水压力 / MPa。对于相似的图像应尽量予以合并，做成分图形式 (a)，(b)，(c) \dots。】}
+
+\subsubsection{GA 编码及参数选择}
+设置种群数为 20 个，交叉率为 0.8，变异率为 0.2。计算过程如图 \ref{fig:2.3a} 所示。
+GA 种群数为 100，交叉率为 0.8，变异率为 0.2。计算过程如图 \ref{fig:2.3b} 所示。
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../figures/图片3.png}
+        \caption{结构优化}
+        \label{fig:2.3a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../figures/图片4.png}
+        \caption{权值、阈值优化}
+        \label{fig:2.3b}
+    \end{subfigure}
+    \caption{BP-GA 计算过程}
+    \label{fig:2.3}
+\end{figure}
+
+\textcolor{red}{【流程图、设备图要合理、简洁，不列与正文无关的内容。注意流程图箭头走向。计算机框图要按规定画，如起始和结束用 $\subset \supset$、判断用 $\diamond$ 等。】}
+
+\subsection{注水压力、注水水量、注水时间}
+巷道前方媒体受到上覆岩层的自重应力后，沿铅垂方向产生压缩变形，水平方向则产生膨胀变形，但是因水平岩体不允许水平方向膨胀，便产生水平方向挤压应力，即侧向水平应力，它的大小与自重应力成正比 [7]。水力挤出措施注水压力最小应当克服水平侧向应力才有可能压裂媒体，因此，压裂疏松媒体的注水压力 $P$ 应为：
+
+\begin{equation}
+P > \frac{\mu}{1 - \mu} \gamma H
+\end{equation}
+
+式中，$P$，$\mu$，$H$ 和 $\gamma$ 分别是注水压力 (MPa)、煤的泊松比、煤层埋深 (m) 和上覆岩层的容重 (t/m$^3$)。
+
+\textcolor{red}{【公式逐章单独编序（如果在下文中没有提到此公式，可以不编号）。变量注意用斜体。在正文文字中出现的物理量、字符、字母以及其他符号，要尽量不用公式编辑器（列出的公式除外）。物理量符号在文中首次出现时，前面应有其中文名词或对其进行解释，后文重复出现时可直接用符号表示。一个符号只代表一个物理含义，一个物理量只用一个符号表示。符号尽量简化，最好以单字母表示。物理量符号采用国家标准中的规定，如压力用 p、温度用 T，均用斜体。矢量、张量、矩阵用黑斜体。下角一般用小写正体，只有下列情况除外：(1) 表示数、变量用小写斜体，如 $S_i, i=1,2,\dots, i$ 用斜体；(2) 保留原物理含义，如比定压热容 $c_p$ 中的 p 为小写斜体；(3) 液体 $l$ 为区别数字 1，用斜体 $l$。】}
+
+试验工作面的埋藏深度为 681 m，计算得自重应力为 17.03 MPa。工作面煤层的泊松比为 0.2 $\sim$ 0.4，取中间值 0.3，则由式 (1) 得注水压力 $P > 7.29$ MPa，由于从泵站到工作面注水管路压力要损失一部分，-660 m W2EB$_8$ 运输巷的实际注水压力一般为 8 $\sim$ 12 MPa。现场试验时还发现在煤相对较硬的区域注水所需压力更大，最大值达到 15 MPa。因而注水压力不仅和前方媒体受力有关，而且也和媒体物理力学性质相关。现场试验时采取单孔注水，由低压 (3 $\sim$ 5 MPa) $\to$ 中压 (6 $\sim$ 8 MPa) $\to$ 高压 (9 $\sim$ 12 MPa) 依次调压注水，这样不仅能够有效的压裂媒体，而且能够使得媒体得到较充分的湿润。
+
+\subsection{实验结果及分析}
+用选择的复合灭火添加剂及清水开展对比灭火实验，实验结果见表 \ref{tab:2.1}，可以看出符合添加剂的加入极大地缩短了细水雾的灭火时间，虽然实验 II-IV 实验条件已经尽可能相同，但是灭火时间却有差异，重复更多实验灭火时间相差都有数秒钟的时间。
+
+\noindent
+\begin{table}[H]
+    \centering
+    \caption{纯细水雾和含复合添加剂细水雾灭火时间}
+    \label{tab:2.1}
+    \makebox[\textwidth][c]{
+    \begin{tabular}{cccccc}
+        \toprule
+        实验编号 & 灭火剂 & \makecell{系统压力 \\ /MPa} & \makecell{燃料及用量 \\ /mL} & \makecell{灭火时间 \\ /s} & 火焰状态 \\
+        \midrule
+        I & 清水 & 1.6 & 煤油 700 & 21.92 & 由大火变为小火后熄灭 \\
+        II & \makecell{复合添加剂 \\ 第一次实验} & 1.6 & 煤油 700 & 3.77 & 由大火变为小火后熄灭 \\
+        \bottomrule
+    \end{tabular}
+    }
+\end{table}
+
+\textcolor{red}{【表的上方须注出表序和表题。表的结构应简洁，具有自明性，建议采用三线表。表头物理量对应数据应纵向可读。表中物理量表示方法，如，系统压力/MPa。对于相似的表格应尽量合并。表内物理量尽量用符号表示。物理量与单位间用斜线，两者不能并列时，斜线与单位一起排于物理量下方。表格应尽量采用 word 提供的模板，表中数值应可以从表里分离出来，即不要做成图片格式。】}
+
+\endgroup
+
+\clearpage
+\section{结论}
+\begingroup
+\zihao{-4}\songti
+\setlength{\baselineskip}{25pt}
+\parindent 2em
+
+(1) 水力挤出与超前排放孔等防突措施相比，措施工程量低、操作工艺简便，施工安全，是一种方便高效的防突措施。
+
+(2) 水力挤出措施消除突出的主要机理：一是改变了工作面前方应力分布，应力集中带前移，卸压带增宽；二是储存在媒体中的瓦斯得到了较为充分的释放，瓦斯含量降低，瓦斯压力减小。从而消除了发生突出的主要动力。
+\par
 \endgroup
