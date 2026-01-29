@@ -1,4 +1,4 @@
-# 中国矿业大学（北京）��业论文 LaTeX 模版
+# 中国矿业大学（北京）毕业论文 LaTeX 模版
 
 这是一个专为中国矿业大学（北京）学生优化的、开箱即用的 LaTeX 毕业论文模版。本模版已经过深度整理和精简，将复杂的类文件逻辑转化为了更加直观、易用的"分块式"源码结构。
 
@@ -25,6 +25,43 @@ cumtb-thesis/
     └── 博士学位论文word模板及大摘要模板/
 ```
 
+## 📂 各学位文件结构说明
+
+### 📘 本科生
+```
+本科生/data/
+├── main.tex                 # 总控文件（配置个人信息）
+├── 0封皮.tex
+├── 1cover.tex
+├── 2claim.tex
+├── 3.1assignment.tex        # 毕业设计（论文）任务书
+├── 3.2assignment.tex        # 毕业设计（论文）结合科研说明书
+├── 4ResearchBrief.tex       # 中期检查报告
+├── 5.1ChineseAbstract.tex   # 中文摘要
+├── 5.2EnglishAbstract.tex   # 英文摘要
+├── 6Body.tex                # 正文内容
+├── 7References.tex          # 参考文献
+├── 8Acknowledgments.tex     # 致谢
+└── 9Appendix.tex            # 附录
+```
+
+### 📙 硕士生 & 📕 博士生
+```
+硕士生/data/ 或 博士生/data/
+├── main.tex                 # 总控文件（配置个人信息）
+├── 0封皮.tex
+├── 1cover.tex
+├── 2claim.tex
+├── 3ChineseAbstract.tex     # 中文摘要
+├── 4EnglishAbstract.tex     # 英文摘要
+├── 5Nomenclature.tex        # 符号说明（可选）
+├── 6Body.tex                # 正文内容
+├── 7References.tex          # 参考文献
+├── 8Appendix.tex            # 附录
+├── 9Acknowledgments.tex     # 致谢
+└── 10CV.tex                 # 个人简历（研究生必填）
+```
+
 ## 🎯 快速开始
 
 ### 第一步：选择对应目录
@@ -43,15 +80,20 @@ cumtb-thesis/
 - 学院、专业、指导教师
 - 论文完成日期
 
-### 第三步：撰写正文
+### 第三步：撰写论文内容
 
-打开 `data/6Body.tex`，模版中已包含 **《LaTeX 学术排版指南》**，您可以直接参考其中的代码学习：
+根据您的学位类型，编辑对应文件：
 
-- **数学公式**：麦克斯韦方程组对齐示例
-- **高质量图表**：三线表与合并单元格示例
-- **多子图排版**：左右并排对比示例
-- **自动化引用**：GB/T 7714 标准引用示例
-- **代码插入**：算法环境与代码高亮示例
+**本科生**：编辑 `6Body.tex`（正文），参考示例内容学习：
+- 数学公式排版
+- 三线表制作
+- 图片插入
+- GB/T 7714 引用规范
+
+**研究生**（硕士/博士）：依次编辑以下文件：
+1. **6Body.tex**：撰写论文正文
+2. **10CV.tex**：填写个人简历（研究生必填）
+3. 其他文件按需编辑（摘要、致谢、附录等）
 
 ### 第四步：编译生成
 
@@ -116,12 +158,6 @@ xelatex main.tex
 - 学校官方规范请查看对应目录下的 `docs_and_standards/` 或 Word 模板文件夹
 - LaTeX 入门教程：[lshort-zh-cn](https://github.com/ctex-org/lshort-zh-cn)
 - 在线 LaTeX 社区：[TeX Stack Exchange](https://tex.stackexchange.com/)
-
-## 📝 更新日志
-
-- **v2.3** (2024-01)：按学位类型重组目录结构，增加博士模版
-- **v2.2** (2023-12)：优化编译流程，修复 GitHub Actions 编译问题
-- **v2.1** (2023-11)：简化目录结构，移除冗余文件
 
 ## 🤝 贡献
 
