@@ -1,0 +1,219 @@
+
+\documentclass[12pt, a4paper, twoside, openany]{ctexart}
+
+\ExplSyntaxOn
+\cs_if_exist:NF \tbl_save_outer_table_cols: { \cs_new:Npn \tbl_save_outer_table_cols: {} }
+\ExplSyntaxOff
+
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{titletoc}
+\usepackage{fontspec}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{mathptmx}
+\numberwithin{equation}{section}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{cite}
+% \usepackage{titlesec}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{arydshln}
+\usepackage{tikz}
+\usepackage{makecell}
+\usepackage{calc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage[normalem]{ulem}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+
+\geometry{left=3.18cm, right=3.18cm, top=2.54cm, bottom=2.54cm, headheight=15pt}
+\raggedbottom
+\setlength{\parskip}{0pt}
+
+\setmainfont{Times New Roman}
+
+% 公式设置
+\AtBeginDocument{
+    % 间距设置：段前段后 0 行
+    \setlength{\abovedisplayskip}{0pt}
+    \setlength{\belowdisplayskip}{0pt}
+    \setlength{\abovedisplayshortskip}{0pt}
+    \setlength{\belowdisplayshortskip}{0pt}
+    % 字号设置：小四号 (12pt), 多倍行距 1.25 (对应约 15pt)
+    % LaTeX 默认 12pt 的 baselineskip 约为 14.4pt, \jot 增加多行公式间的额外间距
+    \setlength{\jot}{3pt} 
+}
+
+% 公式序号设置：按章编号 (这里对应 section), 使用全角括号，右对齐
+\makeatletter
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+\def\tagform@#1{\maketag@@@{\zihao{-4}（\ignorespaces#1\unskip\@@italiccorr）}}
+\makeatother
+
+\newcommand{\erhao}{\fontsize{22bp}{22bp}\selectfont}
+\newcommand{\sanhao}{\fontsize{16bp}{16bp}\selectfont}
+\newcommand{\xiaosan}{\fontsize{15pt}{22.5pt}\selectfont}
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5pt}{12pt}\selectfont}
+
+\newlength{\toclineskip}
+\setlength{\toclineskip}{20pt}
+\newcommand{\bodylineskip}{25pt}
+
+% 页眉底纹双线设置：双线，间距0.5磅
+\renewcommand{\headrule}{
+    \hrule width \headwidth height 0.5bp
+    \vspace{0.5bp}
+    \hrule width \headwidth height 0.5bp
+}
+
+\pagestyle{fancy}
+\fancyhf{} 
+% 默认页眉：偶数页为校名，奇数页为章节名（由各部分自行设定）
+\fancyhead[EC]{\zihao{5}\kaishu 中国矿业大学（北京）博士学位论文}
+\fancyhead[OC]{\zihao{5}\kaishu \leftmark}
+\fancyfoot[C]{\zihao{5}\songti \thepage}
+\renewcommand{\headrulewidth}{0pt} % 使用自定义的 \headrule
+
+\ctexset{
+    section = {
+        format = \centering\zihao{-3}\heiti\bfseries,
+        aftername = \quad,
+        beforeskip = 1\baselineskip,
+        afterskip = 1\baselineskip,
+        break = \clearpage,
+    },
+    subsection = {
+        format = \raggedright\zihao{4}\heiti,
+        beforeskip = 0.5\baselineskip,
+        afterskip = 0.5\baselineskip,
+    },
+    subsubsection = {
+        format = \raggedright\zihao{-4}\songti\bfseries,
+        beforeskip = 0.5\baselineskip,
+        afterskip = 0.5\baselineskip,
+    }
+}
+
+\titlecontents{section}[0em]
+    {\addvspace{6pt}\zihao{-4}\heiti}
+    {\thecontentslabel\hspace{1em}}
+    {}
+    {\titlerule*[0.5pc]{.}\contentspage}
+    [\addvspace{0pt}]
+
+\titlecontents{subsection}[2em]
+    {\addvspace{0pt}\zihao{-4}\songti}
+    {\thecontentslabel\hspace{1em}}
+    {}
+    {\titlerule*[0.5pc]{.}\contentspage}
+    [\addvspace{0pt}]
+
+\titlecontents{subsubsection}[4em]
+    {\addvspace{0pt}\zihao{-4}\songti}
+    {\thecontentslabel\hspace{1em}}
+    {}
+    {\titlerule*[0.5pc]{.}\contentspage}
+    [\addvspace{0pt}]
+
+\makeatletter
+\renewcommand\tableofcontents{
+    \clearpage
+    \thispagestyle{fancy}
+    \markboth{目\quad 录}{目\quad 录}
+    \begingroup
+    \par
+    \vspace{\baselineskip}
+    \centering
+    {\zihao{-3}\heiti\bfseries 目\quad\quad 录}
+    \par
+    \vspace{\baselineskip}
+    \setlength{\baselineskip}{\toclineskip} 
+    \@starttoc{toc}
+    \endgroup
+    \clearpage
+}
+
+% 图清单
+\newcommand{\listoffigurespage}{
+    \clearpage
+    \thispagestyle{fancy}
+    \phantomsection
+    \addcontentsline{toc}{section}{图清单}
+    \markboth{图清单}{图清单}
+    \begingroup
+    \centering
+    {\zihao{-3}\heiti\bfseries 图清单}
+    \par
+    \vspace{\baselineskip}
+    \setlength{\baselineskip}{\toclineskip}
+    \@starttoc{lof}
+    \endgroup
+    \clearpage
+    \mbox{}\clearpage % 空白页
+}
+
+% 表清单
+\newcommand{\listoftablespage}{
+    \clearpage
+    \thispagestyle{fancy}
+    \phantomsection
+    \addcontentsline{toc}{section}{表清单}
+    \markboth{表清单}{表清单}
+    \begingroup
+    \centering
+    {\zihao{-3}\heiti\bfseries 表清单}
+    \par
+    \vspace{\baselineskip}
+    \setlength{\baselineskip}{\toclineskip}
+    \@starttoc{lot}
+    \endgroup
+    \clearpage
+    \mbox{}\clearpage % 空白页
+}
+\makeatother
+
+\begin{document}
+
+\input{0封皮}
+\clearpage
+\mbox{}
+\clearpage
+
+\input{1cover}
+\input{2claim}
+
+\input{3ChineseAbstract}
+\clearpage\mbox{}\clearpage
+
+\input{4EnglishAbstract}
+\clearpage\mbox{}\clearpage
+
+\tableofcontents
+\clearpage\mbox{}\clearpage
+
+\listoffigurespage
+\listoftablespage
+\input{5Nomenclature}
+
+\pagenumbering{arabic}
+\pagestyle{fancy}
+\input{6Body}
+
+\input{7References}
+\input{8Appendix}
+\input{9Acknowledgments}
+\input{10CV}
+
+\end{document}

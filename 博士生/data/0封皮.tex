@@ -1,0 +1,53 @@
+\pagestyle{empty}
+
+% 页面设置：边距上3.0cm, 下3.0cm, 左3.0cm, 右3.0cm, 页眉2.0cm, 页脚2.0cm
+\newgeometry{top=3.0cm, bottom=3.0cm, left=3.0cm, right=3.0cm, headheight=1.0cm, headsep=0.0cm, footskip=1.0cm}
+
+\begin{center}
+    \setstretch{1.0}
+    
+    \vspace*{0.2cm}
+    \includegraphics[width=0.85\textwidth]{../中国矿业大学（北京）校徽_副本/封面校徽.png}
+    
+    \vspace{2.2cm}
+    
+    {\fontsize{36bp}{36bp}\selectfont\heiti\bfseries 博\quad 士\quad 学\quad 位\quad 论\quad 文}
+    
+    \vspace{2.8cm}
+    
+    % 论文题目：黑体, 小二, 居中, 1.5倍行距, 段前段后0行
+    \begin{minipage}{0.85\textwidth}
+        \centering
+        \fontsize{18bp}{27bp}\selectfont\heiti\bfseries 煤中伴生元素的地质地球化学习性与富集模式
+    \end{minipage}
+    
+    \vspace{3.5cm}
+    
+    % 下划线作者信息与前缀
+    \begin{flushleft}
+        \hspace{6em} % 前缀：首行缩进6个字符 (6 characters indent)
+        \begin{minipage}{0.7\textwidth}
+            \setstretch{1.5} % 间距：1.5倍行距
+            \newcommand{\prefixfont}{\fontsize{16bp}{24bp}\selectfont\songti}
+            \newcommand{\infofont}{\fontsize{16bp}{24bp}\selectfont\kaishu}
+            \newcommand{\underlinefield}[1]{\underline{\makebox[220pt][c]{\infofont #1}}}
+            
+            \setlength{\tabcolsep}{0pt}
+            \begin{tabular}{l @{\hspace{-0.5em}} l}
+                \prefixfont 作\quad\quad 者： & \underlinefield{在此输入姓名} \\
+                \prefixfont 学\quad\quad 院： & \underlinefield{在此输入学院名称} \\
+                \prefixfont 学\quad\quad 号： & \underlinefield{在此输入学号} \\
+                \prefixfont 学科专业： & \underlinefield{在此输入专业名称} \\
+                \prefixfont 导\quad\quad 师： & \underlinefield{在此输入导师姓名} \\
+            \end{tabular}
+        \end{minipage}
+    \end{flushleft}
+    
+    \vfill
+    
+    % 日期字体：宋体，数字为Times New Roman；字号：三号；对齐方式：居中；间距：单倍行距
+    {\fontsize{16bp}{16bp}\selectfont\songti 20XX 年 X 月}
+\end{center}
+
+\clearpage
+\restoregeometry

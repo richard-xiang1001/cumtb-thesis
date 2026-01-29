@@ -1,0 +1,75 @@
+\pagestyle{empty}
+
+\newgeometry{left=2.5cm, right=2.5cm, top=2.54cm, bottom=2.54cm}
+
+\begin{center}
+    % 第一部分：分类号和密级
+    % 字体：宋体，字母与数字为Times New Roman；字号：四号；间距：多倍行距1.25，段前段后0行；对齐方式：两端对齐。
+    \begin{minipage}{\textwidth}
+        \setstretch{1.25}
+        \zihao{4}\songti
+        \begin{tabular*}{\textwidth}{@{}l@{\hspace{2pt}}l @{\extracolsep{\fill}} l @{\extracolsep{0pt}\hspace{2pt}}l@{}}
+            中图分类号： & \underline{\makebox[85pt][c]{xxxxx}} & 单位代码： & \underline{\makebox[85pt][c]{11413}} \\
+            UDC 分类号： & \underline{\makebox[85pt][c]{xxxxx}} & 密\quad\quad 级： & \underline{\makebox[85pt][c]{公开}} \\
+        \end{tabular*}
+    \end{minipage}
+
+    \vspace{3.5cm}
+
+    % 第二部分：“博士学位论文”
+    % 字体：黑体；字号：小一；对齐方式：居中；间距：单倍行距，段前段后0行；每个字之间空一格。
+    {\setstretch{1.0}\zihao{-1}\heiti 博\quad 士\quad 学\quad 位\quad 论\quad 文}
+
+    \vspace{3.5cm}
+
+    % 第三部分：题目
+    % 中文题目：楷体GB2312；字号：四号；间距：1.5倍行距，段前段后0行；
+    % 英文题目：Times New Roman；字号：四号；间距：1.5倍行距，段前段后0行；折行文字应左缩进与第一行的首字（母）对齐。
+    \begin{center}
+        \setstretch{1.5}
+        \zihao{4}
+        \begin{tabular}{@{}l p{320pt}@{}}
+            \kaishu 中文题目： & \kaishu \uline{煤中伴生元素的地质地球化学习性与富集模式} \\
+            [2ex]
+            \kaishu 英文题目： & \uline{Geological-geochemical Behaviors and Enrichment Models of Associated Elements in Coal} \\
+        \end{tabular}
+    \end{center}
+
+    \vspace{2.5cm}
+
+% 第四部分：下划线所填信息
+\begin{center}
+    \setstretch{1.5}
+    \zihao{4}\kaishu
+    % 使用 tabular* 撑满全宽
+    % 列定义解释：
+    % r: 第一列（标签）右对齐
+    % @{\hspace{2pt}}: 强制标签与下划线之间只有 2pt 的距离（可根据需要微调为 0pt）
+    % l: 第二列（下划线）左对齐
+    % @{\extracolsep{\fill}}: 让中间的间隙自动伸缩，填满整行
+    % r: 第三列（标签）右对齐
+    % @{\hspace{2pt}}: 同上
+    % l: 第四列（下划线）左对齐
+    \begin{tabular*}{\textwidth}{@{} r @{\hspace{2pt}} l @{\extracolsep{\fill}} r @{\extracolsep{0pt}\hspace{2pt}} l @{}}
+        \noalign{\vspace{10pt}}
+        作\quad\quad 者： & \underline{\makebox[115pt][c]{在此输入姓名}} & 学\quad\quad 号： & \underline{\makebox[115pt][c]{在此输入学号}} \\
+        \noalign{\vspace{10pt}}
+        学科专业： & \underline{\makebox[115pt][c]{在此输入专业}} & 研究方向： & \underline{\makebox[115pt][c]{在此输入方向}} \\
+        \noalign{\vspace{10pt}}
+        导\quad\quad 师： & \underline{\makebox[115pt][c]{在此输入姓名}} & 职\quad\quad 称： & \underline{\makebox[115pt][c]{在此输入职称}} \\
+        \noalign{\vspace{10pt}}
+        学习方式： & \underline{\makebox[115pt][c]{在此输入学习方式}} & 论文提交日期： & \underline{\makebox[115pt][c]{20xx 年 xx 月 xx 日}} \\
+        \noalign{\vspace{10pt}}
+        论文答辩日期： & \underline{\makebox[115pt][c]{20xx 年 xx 月 xx 日}} & 学位授予日期： & \underline{\makebox[115pt][c]{20xx 年 xx 月 xx 日}} \\
+    \end{tabular*}
+\end{center}
+
+    \vfill
+
+    % 第五部分：底部校名
+    % 字体：黑体；字号：小三号；对齐方式：居中；间距：单倍行距，段前段后0行。
+    {\setstretch{1.0}\zihao{-3}\heiti 中国矿业大学（北京）}
+\end{center}
+
+\clearpage
+\restoregeometry
