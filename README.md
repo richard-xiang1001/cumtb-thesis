@@ -34,9 +34,9 @@ cumtb-thesis/
 ├── 0封皮.tex
 ├── 1cover.tex
 ├── 2claim.tex
-├── 3.1assignment.tex        # 毕业设计（论文）任务书
-├── 3.2assignment.tex        # 毕业设计（论文）结合科研说明书
-├── 4ResearchBrief.tex       # 中期检查报告
+├── 3.1assignment.tex        # 毕业设计（论文）任务书第一页
+├── 3.2assignment.tex        # 毕业设计（论文）任务书第二页
+├── 4ResearchBrief.tex       # 结合科研说明书
 ├── 5.1ChineseAbstract.tex   # 中文摘要
 ├── 5.2EnglishAbstract.tex   # 英文摘要
 ├── 6Body.tex                # 正文内容
@@ -54,12 +54,12 @@ cumtb-thesis/
 ├── 2claim.tex
 ├── 3ChineseAbstract.tex     # 中文摘要
 ├── 4EnglishAbstract.tex     # 英文摘要
-├── 5Nomenclature.tex        # 符号说明（可选）
+├── 5Nomenclature.tex        # 符号说明
 ├── 6Body.tex                # 正文内容
 ├── 7References.tex          # 参考文献
 ├── 8Appendix.tex            # 附录
 ├── 9Acknowledgments.tex     # 致谢
-└── 10CV.tex                 # 个人简历（研究生必填）
+└── 10CV.tex                 # 个人简历
 ```
 
 ## 🎯 快速开始
