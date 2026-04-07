@@ -14,6 +14,16 @@
 \usepackage{booktabs}
 \usepackage{caption}
 \usepackage{subcaption}
+\captionsetup[table]{
+    labelformat=simple,
+    labelsep=quad,
+    font=bf
+}
+\captionsetup[figure]{
+    labelformat=simple,
+    labelsep=quad,
+    font=bf
+}
 \usepackage{cite}
 \usepackage{titlesec}
 \usepackage{float}
@@ -27,10 +37,12 @@
 \usepackage{calc}
 \usepackage[hidelinks]{hyperref}
 \usepackage{enumitem}
+\usepackage{pifont}
 
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 
+\numberwithin{equation}{section}
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 
@@ -50,7 +62,7 @@
 
 \pagestyle{fancy}
 \fancyhf{} 
-\fancyhead[C]{\zihao{5}\songti 中国矿业大学（北京）20XX 届本科毕业设计（论文）}
+\fancyhead[C]{\zihao{5}\songti 中国矿业大学（北京）2026 届本科毕业设计（论文）}
 \fancyfoot[C]{\zihao{5}\songti \thepage}
 \renewcommand{\headrulewidth}{0.75pt}
 
