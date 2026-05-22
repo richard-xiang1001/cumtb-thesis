@@ -129,6 +129,11 @@ xelatex main.tex
 ## ⚠️ 常见问题 (FAQ)
 
 <details>
+<summary><b>Overleaf 编译超时（Timeout）或卡死</b></summary>
+免费版 Overleaf 限制了单次编译时长。如果遇到超时卡死，请参考项目根目录下的 <b><a href="./Overleaf编译超时及常见排查指南.md">Overleaf编译超时及常见排查指南.md</a></b> 进行提速优化。
+</details>
+
+<details>
 <summary><b>引用显示 [?] 或 ??</b></summary>
 连续编译 3 次，或运行完整的编译链：XeLaTeX → BibTeX → XeLaTeX → XeLaTeX
 </details>
