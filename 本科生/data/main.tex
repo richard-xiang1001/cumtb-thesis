@@ -1,5 +1,5 @@
 
-\documentclass[12pt, a4paper]{ctexart}
+\documentclass[12pt, a4paper, AutoFakeBold=2.5]{ctexart}
 
 \ExplSyntaxOn
 \cs_if_exist:NF \tbl_save_outer_table_cols: { \cs_new:Npn \tbl_save_outer_table_cols: {} }
@@ -25,6 +25,15 @@
     font=bf
 }
 \usepackage[super,square,numbers,sort&compress]{natbib}
+% 修正上标引用格式（使用宋体数字、缩小字号）
+\makeatletter
+\AtBeginDocument{%
+    \@ifundefined{NAT@up}{}{%
+        \renewcommand{\NAT@up}[1]{%
+            \textsuperscript{{\songtidigit\fontsize{9pt}{9pt}\selectfont ##1}}}%
+    }%
+}
+\makeatother
 \usepackage{titlesec}
 \usepackage{float}
 \usepackage{multirow}
@@ -46,9 +55,26 @@
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 
-\geometry{left=3.18cm, right=3.18cm, top=2.54cm, bottom=2.54cm, headheight=15pt}
+% 页边距：上下2.5cm，左右2cm，装订线左侧0.5cm（规范3.2.1）
+\geometry{left=2.5cm, right=2cm, top=2.5cm, bottom=2.5cm, headheight=15pt}
 
 \setmainfont{Times New Roman}
+% 定义覆盖拉丁字符的宋体（用于页码、参考文献序号等需要宋体数字的场合）
+% 自动适配不同操作系统和 Overleaf 平台
+\IfFontExistsTF{SimSun}{
+    \newfontfamily\songtidigit{SimSun}
+}{
+    \IfFontExistsTF{Songti SC}{
+        \newfontfamily\songtidigit{Songti SC}
+    }{
+        \IfFontExistsTF{STSong}{
+            \newfontfamily\songtidigit{STSong}
+        }{
+            % Overleaf / TeX Live 默认使用 Fandol 字体
+            \newfontfamily\songtidigit{FandolSong}
+        }
+    }
+}
 
 \newcommand{\erhao}{\fontsize{22bp}{22bp}\selectfont}
 \newcommand{\sanhao}{\fontsize{16bp}{16bp}\selectfont}
@@ -62,8 +88,8 @@
 
 \pagestyle{fancy}
 \fancyhf{} 
-\fancyhead[C]{\zihao{5}\songti 中国矿业大学（北京）2026 届本科毕业设计（论文）}
-\fancyfoot[C]{\zihao{5}\songti \thepage}
+\fancyhead[C]{\zihao{5}\songtidigit\songti 中国矿业大学（北京）2026 届本科毕业设计（论文）}
+\fancyfoot[C]{\zihao{5}\songtidigit\songti \thepage}
 \renewcommand{\headrulewidth}{0.75pt}
 
 \ctexset{

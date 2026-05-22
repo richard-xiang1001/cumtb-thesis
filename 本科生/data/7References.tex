@@ -3,7 +3,7 @@
 \addcontentsline{toc}{section}{参考文献}
 
 \begingroup
-    \zihao{5}\songti
+    \zihao{5}\songtidigit\songti
     \setlength{\baselineskip}{20pt}
     
     \ctexset{
@@ -16,11 +16,17 @@
         }
     }
     \renewcommand{\refname}{参考文献}
+
+    % 修正参考文献标签：宋体数字，左顶格，折行缩进对齐（规范 3.8.1）
+    \makeatletter
+    \renewcommand{\@biblabel}[1]{[#1]}
+    \makeatother
     
     \begin{thebibliography}{99}
         \setlength{\topsep}{0pt}
         \setlength{\partopsep}{0pt}
         \addtolength{\itemsep}{-0.5em}
+        % 中文参考文献条目（默认使用宋体，含数字和标点）
         \bibitem{ref1} 刘国钧，陈绍业，王凤翥，等. 图书馆目录[M]. 北京：高等教育出版社，1957：15-18.
         \bibitem{ref2} 李晓东，张庆红，叶瑾琳. 气候学研究的若干理论问题[J]. 北京大学学报：自然科学版，1999, 35(1)：101-106.
         \bibitem{ref3} 辛希孟. 信息技术与信息服务国际研讨会论文集：A集[C]. 北京：中国社会科学出版社，1994.
@@ -32,6 +38,8 @@
         \bibitem{ref9} 中华人民共和国国家技术监督局. GB/T 16159—1996，汉语拼音正词法基本规则[S]. 北京：中国标准出版社，1996.
         \bibitem{ref10} 姜锡洲. 一种温热外敷药制备方案[P]. 中国：881056073，1989-07-26.
         \bibitem{ref11} 王明亮. 关于中国学术期刊标准化数据库系统工程的进展[EB/OL]. [1998-10-04]. http://www.cajcd.edu.cn/pub/wml.tex/980810-2.html.
+        % 英文参考文献条目示例（如需 Times New Roman，在条目前加 \rmfamily）
+        % \bibitem{ref12} {\rmfamily Smith J, Brown K. Title of English paper[J]. Journal Name, 2020, 1(2): 100-110.}
     \end{thebibliography}
 \endgroup
 
