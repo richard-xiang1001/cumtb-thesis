@@ -14,16 +14,19 @@
 \usepackage{booktabs}
 \usepackage{caption}
 \usepackage{subcaption}
+\DeclareCaptionFont{wuhao}{\zihao{5}\songti}
 \captionsetup[table]{
     labelformat=simple,
     labelsep=quad,
-    font=bf
+    font={wuhao,bf}
 }
 \captionsetup[figure]{
     labelformat=simple,
     labelsep=quad,
-    font=bf
+    font={wuhao,bf}
 }
+\usepackage{etoolbox}
+\AtBeginEnvironment{table}{\zihao{5}\songti}
 \usepackage[super,square,numbers,sort&compress]{natbib}
 % 修正上标引用格式（使用宋体数字、缩小字号）
 \makeatletter
